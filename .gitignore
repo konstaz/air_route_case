@@ -1,0 +1,27 @@
+.venv/
+.idea/
+.env
+media/
+/static/
+venv/
+api/
+.DS_Store
+__pycache__/
+dockerfile
+templates/index.html
+.gitlab-ci.yml
+local_settings.py
+celerybeat-schedule.db
+dump.rdb
+*.json
+*.yaml
+*.pyc
+*.mo
+*.pid
+
+# docker
+*env/
+env
+pgdb/
+mongodb/
+dump/
