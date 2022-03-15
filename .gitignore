@@ -7,7 +7,7 @@ venv/
 api/
 .DS_Store
 __pycache__/
-dockerfile
+Dockerfile
 templates/index.html
 .gitlab-ci.yml
 local_settings.py

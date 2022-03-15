@@ -21,7 +21,7 @@ class Route:
     def __init__(
             self,
             _id: str,
-            airline: Airline,
+            airline: dict,
             src_airport: str,
             dst_airport: str,
             codeshare: str,
@@ -50,7 +50,7 @@ class AirlineSchema(Schema):
 
 class RouteSchema(Schema):
     _id = fields.Str()
-    airline = fields.Nested(AirlineSchema)
+    airline = fields.Dict()
     src_airport = fields.Str()
     dst_airport = fields.Str()
     codeshare = fields.Str()

@@ -1,23 +1,21 @@
-import os
-import time
+from flask import Response
 
-from app import database_write, get_public_url
-from data_model import Airline, AirlineSchema, Route, RouteSchema
+from data_model import RouteSchema
 from database import Database
-
-PUBLIC_URL = get_public_url()
 
 
 def main(data_to_update):
     try:
+        route_schema = RouteSchema()
+        deserialized_data = route_schema.load(data_to_update)
+        if deserialized_data:
+            Database.initialize()
+            updated_data = Database.update_one_to_db(data_to_update.pop('_id'), data_to_update)
 
-        Database.initialize()
-        updated_data = Database.update_to_db(data_to_update.pop('_id'), data_to_update)
+            return Response(f"Updated object: {str(updated_data)}", status=200)
 
     except Exception as err:
-        return f"API call failed: {err}"
-
-    return updated_data
+        return Response(f"API call failed: {err}", status=400)
 
 
 if __name__ == "__main__":

@@ -1,26 +1,18 @@
-import os
-import time
+from flask import Response
 
-from app import database_write, get_public_url
-from data_model import Airline, AirlineSchema, Route, RouteSchema
 from database import Database
 
-PUBLIC_URL = get_public_url()
 
-
-def main(_id: str):
+def main(query: dict) -> dict:
     try:
         Database.initialize()
-        retrieved_data = Database.load_from_db(
-            {
-                "_id": _id
-            }
-        )
+        retrieved_data = Database.load_one_from_db(query)
+        print(f' HEHEHEHEHHEHEHEHEHHEH   :::::::: {list(retrieved_data)}')
+
+        return dict(retrieved_data)
 
     except Exception as err:
-        return f"API call failed: {err}"
-
-    return retrieved_data
+        return Response(f"API call failed: {err}", status=400)
 
 
 if __name__ == "__main__":

@@ -2,29 +2,39 @@ import os
 import pymongo
 
 
+class Database(object):
 
-class Database:
+    # URI = os.getenv('mongodb://localhost:27017/')
+    URI = 'mongodb://localhost:27017/'
+    DATABASE = None
 
-    @classmethod
-    def initialize(cls):
+    @staticmethod
+    def initialize():
+        print(f'POOOOOOOOO :::::: {os.getenv("MONGO_NAME")}')
+        print(f'POOOOOOOOO :::::: {os.getenv("MONGO_COLLECTION")}')
         client = pymongo.MongoClient(
-            f'mongodb://{os.getenv("MONGO_HOST")}:{os.getenv("MONGO_PORT")}/{os.getenv("MONGO_NAME")}'
+            # f'mongodb://{os.getenv("MONGO_HOST")}:{os.getenv("MONGO_PORT")}/{os.getenv("MONGO_NAME")}'
+            Database.URI
         )
-        cls.database = client[f'{os.getenv("MONGO_COLLECTION")}']
+        Database.DATABASE = client[os.getenv('MONGO_NAME')]
 
 
-    @classmethod
-    def save_to_db(cls, data):
-        cls.database.insert_one(data)
+    @staticmethod
+    def save_one_to_db(data):
+        return Database.DATABASE[f"{os.getenv('MONGO_COLLECTION')}"].insert_one(data)
+        
+    @staticmethod
+    def load_one_from_db(query):
+        return Database.DATABASE[f"{os.getenv('MONGO_COLLECTION')}"].find_one(query)
 
-    @classmethod
-    def load_from_db(cls, query):
-        return cls.database.find(query)
+    @staticmethod
+    def update_one_to_db(_id, data):
+        return Database.DATABASE[f"{os.getenv('MONGO_COLLECTION')}"].update_one({'_id': _id}, {"$set": data})
 
-    @classmethod
-    def update_to_db(cls, _id, data):
-        cls.database.update_one({'_id': _id}, {"$set": data})
+    @staticmethod
+    def remove_one_from_db(_id):
+        return Database.DATABASE[f"{os.getenv('MONGO_COLLECTION')}"].delete_one({'_id': _id})
 
-    @classmethod
-    def remove_from_db(cls, _id):
-        cls.database.delete_one({'_id': _id})
+    @staticmethod
+    def load_routes_from_db(query):
+        return Database.DATABASE[f"{os.getenv('MONGO_COLLECTION')}"].find(query)
