@@ -61,28 +61,3 @@ class RouteSchema(Schema):
     def make_route(self, data, **kwargs):
         return Route(**data)
 
-
-
-
-# {
-#     "_id": {
-#         "$oid": "56e9b39b732b6122f8781620"
-#     },
-#     "airline": {
-#         "id": {
-#             "$numberInt": "214"
-#         },
-#         "name": "Air Berlin",
-#         "alias": "AB",
-#         "iata": "BER"
-#     },
-#     "src_airport": "DUS",
-#     "dst_airport": "CAG",
-#     "codeshare": "",
-#     "stops": {
-#         "$numberInt": "0"
-#     },
-#     "airplane": {
-#         "$numberInt": "738"
-#     }
-# }
