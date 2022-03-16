@@ -4,16 +4,13 @@ import pymongo
 
 class Database(object):
 
-    # URI = os.getenv('mongodb://localhost:27017/')
-    URI = 'mongodb://localhost:27017/'
+    URI = os.getenv('MONGO_URI')
     DATABASE = None
 
     @staticmethod
     def initialize():
-        print(f'POOOOOOOOO :::::: {os.getenv("MONGO_NAME")}')
-        print(f'POOOOOOOOO :::::: {os.getenv("MONGO_COLLECTION")}')
+
         client = pymongo.MongoClient(
-            # f'mongodb://{os.getenv("MONGO_HOST")}:{os.getenv("MONGO_PORT")}/{os.getenv("MONGO_NAME")}'
             Database.URI
         )
         Database.DATABASE = client[os.getenv('MONGO_NAME')]

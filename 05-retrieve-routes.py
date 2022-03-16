@@ -4,7 +4,7 @@ from database import Database
 from flask import Response
 
 
-def main(query):
+def main(query: dict) -> dict:  # showed dict here in order to avoid additional imports
     try:
 
         Database.initialize()
@@ -26,7 +26,3 @@ def main(query):
 
     except Exception as err:
         return Response(f"API call failed: {err}", status=400)
-
-
-if __name__ == "__main__":
-    print(main())

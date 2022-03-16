@@ -4,9 +4,9 @@ from data_model import RouteSchema
 from database import Database
 
 
-def main(data_to_update):
+def main(data_to_update: dict) -> Response:
     try:
-        route_schema = RouteSchema()
+        route_schema: RouteSchema = RouteSchema()
         deserialized_data = route_schema.load(data_to_update)
         if deserialized_data:
             Database.initialize()
@@ -16,7 +16,3 @@ def main(data_to_update):
 
     except Exception as err:
         return Response(f"API call failed: {err}", status=400)
-
-
-if __name__ == "__main__":
-    print(main())

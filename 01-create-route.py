@@ -5,7 +5,7 @@ from flask import Response
 
 def main(data_to_store: Route) -> Response:
     try:
-        print(f'SAVVVAVAAVVAVAVAVAV::::::: {data_to_store}')
+
         route_schema = RouteSchema()
         deserialized_data = route_schema.load(data_to_store)
         if deserialized_data:
@@ -16,7 +16,3 @@ def main(data_to_store: Route) -> Response:
 
     except Exception as err:
         return Response(f"API call failed: {err}", status=400)
-
-
-if __name__ == "__main__":
-    print(main())
