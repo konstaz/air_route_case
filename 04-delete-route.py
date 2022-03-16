@@ -3,6 +3,7 @@ from flask import Response
 
 
 def main(data_to_delete: dict) -> Response:
+    """The function deletes route with respective ID"""
     try:
 
         Database.initialize()

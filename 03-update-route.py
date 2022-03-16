@@ -5,6 +5,7 @@ from database import Database
 
 
 def main(data_to_update: dict) -> Response:
+    """The Function updates data of the route"""
     try:
         route_schema: RouteSchema = RouteSchema()
         deserialized_data = route_schema.load(data_to_update)
