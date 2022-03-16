@@ -16,6 +16,9 @@ examples = [
 
 @app.route("/")
 def show_list():  # just a list of endpoints on home page
+    """
+    The list of available functions
+    """
     body = ""
     for example in examples:
         body += f'<a href="/{example}">{example}</a><br>'
@@ -24,6 +27,10 @@ def show_list():  # just a list of endpoints on home page
 
 @app.route("/<example>", methods=["GET", "POST"])
 def run_example(example=None):
+    """
+    The function responsible to launch main function of python files
+    whose names are in the list examples mentioned above
+    """
 
     data = request.args if not request.get_json() else request.get_json()
 

@@ -1,15 +1,5 @@
 version: '3.7'
-#
-#services:
-#  mongodb:
-#    image: mongo:5.0
-#    ports:
-#      - 27017:27017
-#    volumes:
-#      - ~/apps/mongo:/data/db
-##    environment:
-##      - MONGO_INITDB_ROOT_USERNAME=user
-##      - MONGO_INITDB_ROOT_PASSWORD=S3cret
+
 services:
   app:
     build: .
@@ -25,16 +15,16 @@ services:
       - db
     networks:
       - backend
-  db:
-      image: mongo:5.0
-      ports:
-        - "27017:27017"
-      env_file:
-        - ./.env
-      volumes:
-        - ~/apps/mongo:/data/db
-      networks:
-        - backend
+#  db:
+#      image: mongo:5.0
+#      ports:
+#        - "27017:27017"
+#      env_file:
+#        - ./.env
+#      volumes:
+#        - ~/apps/mongo:/data/db
+#      networks:
+#        - backend
 
 networks:
   backend:
