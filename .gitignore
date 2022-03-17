@@ -8,13 +8,14 @@ api/
 .DS_Store
 __pycache__/
 Dockerfile
+docker-compose.yml
 templates/index.html
 .gitlab-ci.yml
 local_settings.py
 celerybeat-schedule.db
 dump.rdb
 *.json
-*.yaml
+*.yml
 *.pyc
 *.mo
 *.pid
