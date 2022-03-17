@@ -9,10 +9,10 @@ services:
       - ./.env
     volumes:
       - .:/Test_Case
-    links:
-      - db
-    depends_on:
-      - db
+#    links:
+#      - db
+#    depends_on:
+#      - db
     networks:
       - backend
 #  db:
