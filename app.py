@@ -33,6 +33,8 @@ def run_example(example=None):
     """
 
     data = request.args if not request.get_json() else request.get_json()
+    # I know I could validate between types of requests POST or GET
+    # when executing function but I think it is also legit and convenient
 
     if example not in examples:
         flask.abort(404, "Example does not exist")

@@ -35,8 +35,8 @@ json example:
     }
     
 postman requests examples:
-http://<ip>:5000/01-create-route   (json example above)
-http://<ip>:5000/02-get-route?_id=< id >
-http://<ip>:5000/03-update-route   (json example above)
-http://<ip>:5000/04-delete-route   (json with _id)
-http://<ip>:5000/05-retrieve-routes?src_airport=<example>&dst_airport=<example>
+http://<ip>:5000/01-create-route   POST (json example above)
+http://<ip>:5000/02-get-route?_id=< id >   GET
+http://<ip>:5000/03-update-route   POST (json example above)
+http://<ip>:5000/04-delete-route   POST (json with _id)
+http://<ip>:5000/05-retrieve-routes?src_airport=<example>&dst_airport=<example>   GET
